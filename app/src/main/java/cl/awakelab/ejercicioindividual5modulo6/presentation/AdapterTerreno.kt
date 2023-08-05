@@ -3,6 +3,7 @@ package cl.awakelab.ejercicioindividual5modulo6.presentation
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import cl.awakelab.ejercicioindividual5modulo6.data.local.TerrenoEntity
 import cl.awakelab.ejercicioindividual5modulo6.data.remote.Terreno
 import cl.awakelab.ejercicioindividual5modulo6.databinding.ItemTerrenoBinding
 import coil.load
@@ -10,10 +11,10 @@ import coil.load
 class AdapterTerreno: RecyclerView.Adapter<AdapterTerreno.ItemTerrenoViewHolder>() {
 
     lateinit var binding: ItemTerrenoBinding
-    private val listTerrenos = mutableListOf<Terreno>()
+    private val listTerrenos = mutableListOf<TerrenoEntity>()
 
     class ItemTerrenoViewHolder(val view:ItemTerrenoBinding): RecyclerView.ViewHolder(view.root) {
-        fun bind(terreno: Terreno) {
+        fun bind(terreno: TerrenoEntity) {
             print(terreno.imagen)
             view.imageViewTerreno.load(terreno.imagen)
             view.textViewType.text = terreno.tipo
@@ -36,7 +37,7 @@ class AdapterTerreno: RecyclerView.Adapter<AdapterTerreno.ItemTerrenoViewHolder>
         holder.bind(terreno)
     }
 
-    fun setData(terrenos: List<Terreno>) {
+    fun setData(terrenos: List<TerrenoEntity>) {
         this.listTerrenos.clear()
         this.listTerrenos.addAll(terrenos)
         notifyDataSetChanged()

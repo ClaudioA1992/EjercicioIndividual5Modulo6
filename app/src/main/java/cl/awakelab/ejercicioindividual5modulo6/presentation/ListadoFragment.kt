@@ -35,17 +35,15 @@ class ListadoFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        terrenoVM.getAllTerrenos()
         adapter = AdapterTerreno()
         binding.recyclerView.adapter = adapter
-        terrenoVM.terrenosLiveData.observe(viewLifecycleOwner) {
+        terrenoVM.terrenosLiveData().observe(viewLifecycleOwner) {
             adapter.setData(it)
         }
     }
 
     private fun initListeners() {
         binding.buttonLoad.setOnClickListener {
-            terrenoVM.getAllTerrenos()
             initAdapter()
         }
     }
