@@ -62,6 +62,10 @@ dependencies {
     annotationProcessor("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
 
+    var coroutinas_version = "1.1.16"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinas_version")
+
+
 
 }
 
