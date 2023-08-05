@@ -36,6 +36,7 @@ class ListadoFragment : Fragment() {
 
     private fun initAdapter() {
         adapter = AdapterTerreno()
+        terrenoVM.obtenerTerrenos()
         binding.recyclerView.adapter = adapter
         terrenoVM.terrenosLiveData().observe(viewLifecycleOwner) {
             adapter.setData(it)
