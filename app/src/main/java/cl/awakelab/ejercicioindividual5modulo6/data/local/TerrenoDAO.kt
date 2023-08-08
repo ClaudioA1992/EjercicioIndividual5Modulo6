@@ -18,5 +18,5 @@ interface TerrenoDAO {
     @Query("SELECT * FROM tabla_terrenos order by id ASC")
     fun getTerrenosFromEntity(): LiveData<List<TerrenoEntity>>
 
-
 }
+

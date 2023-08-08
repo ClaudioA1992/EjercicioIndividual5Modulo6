@@ -1,17 +1,23 @@
 package cl.awakelab.ejercicioindividual5modulo6.presentation
 
+import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import cl.awakelab.ejercicioindividual5modulo6.R
 import cl.awakelab.ejercicioindividual5modulo6.data.local.TerrenoEntity
-import cl.awakelab.ejercicioindividual5modulo6.data.remote.Terreno
 import cl.awakelab.ejercicioindividual5modulo6.databinding.ItemTerrenoBinding
 import coil.load
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 
-class AdapterTerreno: RecyclerView.Adapter<AdapterTerreno.ItemTerrenoViewHolder>() {
+class AdapterTerreno(): RecyclerView.Adapter<AdapterTerreno.ItemTerrenoViewHolder>() {
 
     lateinit var binding: ItemTerrenoBinding
-    private val listTerrenos = mutableListOf<TerrenoEntity>()
+    public val listTerrenos = mutableListOf<TerrenoEntity>()
 
     class ItemTerrenoViewHolder(val view:ItemTerrenoBinding): RecyclerView.ViewHolder(view.root) {
         fun bind(terreno: TerrenoEntity) {
@@ -34,6 +40,16 @@ class AdapterTerreno: RecyclerView.Adapter<AdapterTerreno.ItemTerrenoViewHolder>
 
     override fun onBindViewHolder(holder: ItemTerrenoViewHolder, position: Int) {
         val terreno = listTerrenos[position]
+        var bundle: Bundle = Bundle()
+        val gson: Gson = GsonBuilder().disableHtmlEscaping().create()
+        val productJsonString: String = gson.toJson(terreno)
+        bundle.putString("terreno", productJsonString)
+        holder.itemView.setOnClickListener {
+            Navigation.findNavController(binding.getRoot()).navigate(
+                R.id.action_listadoFragment_to_detailFragment,
+                bundle
+            )
+        }
         holder.bind(terreno)
     }
 

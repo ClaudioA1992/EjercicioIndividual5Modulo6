@@ -9,5 +9,14 @@
         android:id="@+id/listadoFragment"
         android:name="cl.awakelab.ejercicioindividual5modulo6.presentation.ListadoFragment"
         android:label="fragment_listado"
-        tools:layout="@layout/fragment_listado" />
+        tools:layout="@layout/fragment_listado" >
+        <action
+            android:id="@+id/action_listadoFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="cl.awakelab.ejercicioindividual5modulo6.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
 </navigation>

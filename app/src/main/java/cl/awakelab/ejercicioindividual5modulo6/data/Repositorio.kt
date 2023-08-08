@@ -38,5 +38,3 @@ class Repositorio(private val terrenoAPI: TerrenoAPI, private val terrenoDAO: Te
     fun Terreno.transformar(): TerrenoEntity =
         TerrenoEntity(this.id, this.precio, this.tipo, this.imagen)
 
-
-
